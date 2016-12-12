@@ -160,7 +160,8 @@ vec1<-matrix(data=MESSAuto$rho,nrow=1,ncol=iter-1)
 #house price application
 
 require(CARBayes)
-load("spatialhousedata.rda")
+load("spatialhousedata.rda")#data provided by the CARBayes package
+#(Scottish Neighbourhood Statistics)
 #with row-stochastic contiguity matrix
 M.nb <- poly2nb(spatialhousedata, row.names = rownames(spatialhousedata@data))
 M.list <- nb2listw(M.nb, style = "B")
@@ -205,14 +206,3 @@ SampleAllBin<-MESSAuto2(house.X,log.house.price,Mbin.mat,5000,4000,RhoBin)
 
 
 
-ccpo=SplinesVersion1$cpo
-
-newcpo1=1/apply(exp(.5*ccpo),1,mean)
-
-
-ccpo=SplinesVersion3$cpo
-
-newcpo3=1/apply(exp(.5*ccpo),1,mean)
-
-dic1=SplinesVersion1$DIC
-dic3=SplinesVersion3$DIC
